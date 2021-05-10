@@ -1,12 +1,13 @@
-
+import { toast } from "react-toastify";
 var redux = require('redux');
 
 
 const postInitialState = {
     postData: {},
     showImageDes: false,
-    imageDes:"",
-    showFormLogin: false,
+    imageDes: "",
+    notify: "",
+    showAddPostForm: false,
 }
 const allReducer = (state = postInitialState, action) => {
     switch (action.type) {
@@ -14,7 +15,15 @@ const allReducer = (state = postInitialState, action) => {
             return state
         case "CHANGE_EDIT_POST":
             return {...state, isEdit:!state.isEdit}
-    
+        case "NOTIFY_SUCCESS":
+            toast.success(action.notify);
+            return {...state, notify:action.notify}
+        case "NOTIFY_ERROR":
+            toast.error(action.notify);
+            return {...state, notify:action.notifyEdit}
+        case "SHOW_ADD_POST_FORM":
+            console.log(state.showAddPostForm);
+            return {...state, showAddPostForm:!state.showAddPostForm}
         default:
             return state
     }

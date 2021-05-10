@@ -9,14 +9,6 @@ const pool = new Pool({
   password: 'Long2311a*',
   port: 5432,
 })
-// const client = new Client({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'post',
-//   password: 'Long2311a*',
-//   port: 5432,
-// })
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -26,13 +18,10 @@ router.get('/', function(req, res, next) {
 // api get data from postgreSql
 router.get('/getdata', function(req, res, next) {
 
-  // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
   // Set to true if you need the website to include cookies in the requests sent

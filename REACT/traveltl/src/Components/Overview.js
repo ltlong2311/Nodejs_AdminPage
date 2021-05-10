@@ -1,6 +1,6 @@
 import React from "react";
-import RowPost from "./RowPost";
 import "./Overview.scss";
+import Chart from "./Chart";
 function Content(props) {
   
   return (
@@ -15,11 +15,13 @@ function Content(props) {
                 <i className="fas fa-chart-line mr-1" />
                 Lượt truy cập
               </div>
-              <div className="card-body">
-                <canvas id="myAreaChart" width="100%" height={40} />
+              <div className="card-body" style={{}}>
+                <Chart/>
               </div>
             </div>
           </div>
+       
+
           {/* <div className="col-xl-6">
                     <div className="card mb-4">
                     <div className="card-header">

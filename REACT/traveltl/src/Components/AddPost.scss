@@ -1,0 +1,45 @@
+#create-post-form {
+	.add-form {
+		position: fixed;
+		right: 0;
+		top: 55px;
+		z-index: 999;
+		background-color: rgb(215, 243, 243);
+		animation: showFormRight 0.5s 1;
+		button {
+			&.close {
+				padding-right: 6px;
+			}
+		}
+		::-webkit-input-placeholder {
+			color: rgb(169, 169, 169);
+		}
+		:-moz-placeholder {
+			color: rgb(169, 169, 169);
+		}
+		::-moz-placeholder {
+			color: rgb(169, 169, 169);
+		}
+		:-ms-input-placeholder {
+			color: rgb(169, 169, 169);
+		}
+	}
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.3);
+		z-index: 999;
+	}
+}
+
+@keyframes showFormRight {
+    0%  {
+        transform: translateX(25rem)
+    }
+    99% {
+        transform: translateX(0);
+    }
+}

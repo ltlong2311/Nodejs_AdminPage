@@ -1,6 +1,8 @@
 import React from "react";
 import "./Post.scss";
 import RowPost from "./RowPost";
+import {connect} from 'react-redux'
+
 function Post(props) {
   const showData = () => {
     if (props.postData !== null) {
@@ -26,7 +28,7 @@ function Post(props) {
           <div className="d-flex card-header mb-3">
             <h5 className="mr-1">Danh sách bài đăng</h5>
             <div className="ml-auto" id="button-add">
-              <div className="btn btn-info btn-add">+</div>
+              <div onClick={() => props.showAddPostForm()} className="btn btn-info btn-add">+</div>
               <span> Thêm bài đăng</span>
             </div>
           </div>
@@ -70,5 +72,13 @@ function Post(props) {
     </div>
   );
 }
-
-export default Post;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showAddPostForm: () => {
+      dispatch({
+        type: "SHOW_ADD_POST_FORM",
+      })
+    }
+  }
+}
+export default connect(null,mapDispatchToProps)(Post);
