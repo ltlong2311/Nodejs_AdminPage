@@ -78,6 +78,7 @@ function AddPost(props) {
     props.changeAddForm();
     window.location.replace("/post");
   }
+  
   return (
     <div id="create-post-form">
       <div onClick={() => props.changeAddForm()} className="overlay" />
