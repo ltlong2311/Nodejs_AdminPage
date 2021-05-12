@@ -5,9 +5,9 @@ function RowPost(props) {
     <tr>
       <td>{props.id}</td>
       <td>{props.title}</td>
-      <td>{props.user}LongThanh23</td>
+      <td>{props.user}</td>
       <td>{props.category}</td>
-      <td>{props.image}</td>
+      <td style={{textAlign:"center"}}><img width={30} height={30} src={props.image} alt=""></img></td>
       <td>{props.id}</td>
       <td>
         <div className="button-group">

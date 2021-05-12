@@ -11,8 +11,6 @@ const postInitialState = {
 }
 const allReducer = (state = postInitialState, action) => {
     switch (action.type) {
-        case "ADD_DATA":
-            return state
         case "CHANGE_EDIT_POST":
             return {...state, isEdit:!state.isEdit}
         case "NOTIFY_SUCCESS":
@@ -24,6 +22,9 @@ const allReducer = (state = postInitialState, action) => {
         case "SHOW_ADD_POST_FORM":
             console.log(state.showAddPostForm);
             return {...state, showAddPostForm:!state.showAddPostForm}
+        case "ADD_POST_DATA":
+            console.log(action.newPost);
+            return state
         default:
             return state
     }

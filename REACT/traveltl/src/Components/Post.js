@@ -13,6 +13,7 @@ function Post(props) {
             title={value.post_name}
             category={value.post_category}
             image={value.image}
+            user={value.poster}
             id={value.id}
           />
         );

@@ -42,21 +42,22 @@ router.get('/getdata', function(req, res, next) {
   })
 });
 
-router.get('/add', function(req, res, next) {
-   res.render('add', {});
+router.get('/add-post', function(req, res, next) {
+   res.render('add-post', {});
 });
 
 
-router.post('/add', function(req, res, next) {
+router.post('/add-post', function(req, res, next) {
   var post_name = req.body.post_name,
   post_category = req.body.post_category,
-  image = req.body.image;
-  
-  pool.query("INSERT INTO post_info (post_name,post_category,image) VALUES ($1,$2,$3)",[post_name,post_category,image], (err,response) => {
+  image = req.body.image,
+  poster = req.body.poster;
+
+  pool.query("INSERT INTO post_info (post_name,post_category,image,poster) VALUES ($1,$2,$3,$4)",[post_name,post_category,image,poster], (err,response) => {
     if(err){
       res.send(err);
     } else {
-      res.send('add success' + post_name + post_category + image);
+      res.send('add success' + post_name + post_category + image + poster);
     }
   })
 

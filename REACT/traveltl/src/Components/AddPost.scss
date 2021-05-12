@@ -3,6 +3,9 @@
 		position: fixed;
 		right: 0;
 		top: 55px;
+		// width: 25vw;
+		min-width: 350px;
+		height: 100vh;
 		z-index: 999;
 		background-color: rgb(215, 243, 243);
 		animation: showFormRight 0.5s 1;

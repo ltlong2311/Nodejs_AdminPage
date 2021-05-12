@@ -17,20 +17,20 @@ function Navigation() {
               </div>
               Tổng quan
             </Link>
-            <Link className="nav-link" href="/change-diary" title="">
+            <Link className="nav-link" to="/change-diary" title="">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-chart-bar" />
               </div>
               Nhật ký thay đổi
             </Link>
-            <Link className="nav-link" href="index.html" title="">
+            <Link className="nav-link" to="index.html" title="">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-exclamation-circle" />
               </div>
               Vấn đề phát sinh
             </Link>
             <div className="sb-sidenav-menu-heading">Quản lý</div>
-            <Link className="nav-link collapsed" href=" /">
+            <Link className="nav-link collapsed" to=" /">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-suitcase-rolling" />
               </div>
@@ -39,7 +39,7 @@ function Navigation() {
 
             <Link
               className="nav-link collapsed"
-              href=" /"
+              to=" /"
               data-toggle="collapse"
               data-target="#collapsePages"
               aria-expanded="false"
@@ -65,7 +65,7 @@ function Navigation() {
               >
                 <Link
                   className="nav-link collapsed"
-                  href="/manager"
+                  to="/manager"
                   data-toggle="collapse"
                   data-target="#pagesCollapseAuth"
                   aria-expanded="false"
@@ -84,16 +84,16 @@ function Navigation() {
                   data-parent="#sidenavAccordionPages"
                 >
                   <nav className="sb-sidenav-menu-nested nav">
-                    <Link className="nav-link" href="login.html" title="">
+                    <Link className="nav-link" to="login.html" title="">
                       Thông tin
                     </Link>
-                    <Link className="nav-link" href="register.html" title="">
+                    <Link className="nav-link" to="register.html" title="">
                       Quyền
                     </Link>
                   </nav>
                 </div>
 
-                <Link className="nav-link" href="index.html" title="">
+                <Link className="nav-link" to="index.html" title="">
                   Người dùng
                 </Link>
               </nav>
@@ -101,7 +101,7 @@ function Navigation() {
 
             <Link
               className="nav-link collapsed"
-              href=" /"
+              to=" /"
               data-toggle="collapse"
               data-target="#collapseLayouts"
               aria-expanded="false"
@@ -131,35 +131,35 @@ function Navigation() {
                 </Link>
                 <Link
                   className="nav-link"
-                  href="layout-sidenav-light.html"
+                  to="layout-sidenav-light.html"
                   title=""
                 >
                   Điểm đến
                 </Link>
                 <Link
                   className="nav-link"
-                  href="layout-sidenav-light.html"
+                  to="layout-sidenav-light.html"
                   title=""
                 >
                   Thông báo
                 </Link>
                 <Link
                   className="nav-link"
-                  href="layout-sidenav-light.html"
+                  to="layout-sidenav-light.html"
                   title=""
                 >
                   Liên hệ
                 </Link>
                 <Link
                   className="nav-link"
-                  href="layout-sidenav-light.html"
+                  to="layout-sidenav-light.html"
                   title=""
                 >
                   Hoạt động du lịch
                 </Link>
                 <Link
                   className="nav-link"
-                  href="layout-sidenav-light.html"
+                  to="layout-sidenav-light.html"
                   title=""
                 >
                   Diễn đàn TravelTL
@@ -168,13 +168,13 @@ function Navigation() {
             </div>
 
             <div className="sb-sidenav-menu-heading">Khác</div>
-            <Link className="nav-link" href="charts.html" title="">
+            <Link className="nav-link" to="charts.html" title="">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-chart-area" />
               </div>
               Doanh thu
             </Link>
-            <Link className="nav-link" href="tables.html" title="">
+            <Link className="nav-link" to="tables.html" title="">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-book-reader" />
               </div>

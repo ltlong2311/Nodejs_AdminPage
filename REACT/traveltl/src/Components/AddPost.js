@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import "./AddPost.scss";
+
+const addPostAction = (post_name, post_category, image, poster) => {
+  return axios
+    .post("/add-post", { post_name, post_category, image, poster })
+    .then((resp) => resp.data);
+};
+
 function AddPost(props) {
   const [postTitle, setPostTitle] = useState("");
   const [postCategory, setPostCategory] = useState("");
@@ -10,31 +18,47 @@ function AddPost(props) {
   const isTitleChange = (e) => {
     setPostTitle(e.target.value);
   };
+  // console.log(postTitle);
   const isCategoryChange = (e) => {
     setPostCategory(e.target.value);
   };
+  console.log(postCategory);
   const isImageChange = (e) => {
     setPostImage(e.target.value);
   };
   const isContentChange = (e) => {
     setPostContent(e.target.value);
   };
-  const addDataPost = (title, category, content) => {
+  const addDataPost = () => {
     var newPost = {};
-    newPost.title = postTitle;
-    newPost.category = postCategory;
+    newPost.post_name = postTitle;
+    newPost.post_category = postCategory;
     newPost.image = postImage;
-    newPost.content = postContent;
+    newPost.post_content = postContent;
     newPost.poster = "Travel TL";
-    newPost.posterImg =
-      "https://upload.wikimedia.org/wikipedia/commons/f/fb/Sanhohonyenphuyen.jpg";
+    console.log(newPost);
+    
+    var post_name = postTitle;
+    var post_category = postCategory;
+    var image = postImage;
+    // var post_content = postContent;
+    var poster = "Travel TL";
+
     if (postTitle && postContent && postCategory) {
-      props.getData(newPost);
+      // TH project lon, gui len store se tranh import axios o nhieu noi
+      props.pushDataPost(newPost);
+      //
+      
+      addPostAction(post_name, post_category, image, poster).then(
+        (response) => {
+          console.log(response);
+        }
+      );
+      //
       console.log("Thêm " + JSON.stringify(newPost) + " thành công!");
       props.postSuccess("Đăng bài thành công!");
       setPostTitle("");
       setPostContent("");
-      window.location.replace("/post");
     } else if (!postTitle) {
       props.postError("Chưa nhập tiêu đề!");
       setPostTitle("");
@@ -49,12 +73,17 @@ function AddPost(props) {
       setPostContent("");
     }
   };
+
+  const closeAddForm = () => {
+    props.changeAddForm();
+    window.location.replace("/post");
+  }
   return (
     <div id="create-post-form">
       <div onClick={() => props.changeAddForm()} className="overlay" />
       <div className="add-form">
         <button
-          onClick={() => props.changeAddForm()}
+          onClick={closeAddForm}
           type="button"
           className="close"
           data-dismiss="modal"
@@ -116,8 +145,8 @@ function AddPost(props) {
                       id="type"
                     >
                       <option value="">---</option>
-                      <option value="Travel">Du lịch</option>
-                      <option value="evaluate">Đánh giá</option>
+                      <option value="Du lịch">Du lịch</option>
+                      <option value="Đánh giá">Đánh giá</option>
                       <option value="Review">Review</option>
                     </select>
                     <p className="help-block text-danger" />
@@ -128,7 +157,7 @@ function AddPost(props) {
                     <div className="form-group">
                       <label></label>
                       <input
-                        onChange={(event) => isImageChange(event)}
+                        // onChange={(event) => isImageChange(event)}
                         type="file"
                         className="form-control-file"
                         name="fFile"
@@ -166,7 +195,7 @@ function AddPost(props) {
                     id="sendMessageButton"
                     type="button"
                   >
-                    Send
+                    Thêm
                   </button>
                 </div>
               </form>
@@ -190,6 +219,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "SHOW_ADD_POST_FORM",
       });
+    },
+    pushDataPost: (newPost) => {
+      dispatch({ type: "ADD_POST_DATA", newPost });
     },
   };
 };

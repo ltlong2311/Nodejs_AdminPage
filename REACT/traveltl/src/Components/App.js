@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const getPostData = () => {
-  return axios.get("http://localhost:4000/getdata").then((res) => res.data);
+  return axios.get("/getdata").then((res) => res.data);
 };
 
 function App(props) {
