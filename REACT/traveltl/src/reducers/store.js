@@ -9,6 +9,7 @@ const postInitialState = {
     notify: "",
     showAddPostForm: false,
 }
+
 const allReducer = (state = postInitialState, action) => {
     switch (action.type) {
         case "CHANGE_EDIT_POST":
@@ -20,15 +21,19 @@ const allReducer = (state = postInitialState, action) => {
             toast.error(action.notify);
             return {...state, notify:action.notifyEdit}
         case "SHOW_ADD_POST_FORM":
-            console.log(state.showAddPostForm);
             return {...state, showAddPostForm:!state.showAddPostForm}
+        case "GET_POST_DATA":
+            console.log(action.postData);
+            return {...state, postData:action.postData}
         case "ADD_POST_DATA":
             console.log(action.newPost);
+           
             return state
         default:
             return state
     }
 }
+
 var store = redux.createStore(allReducer);
 store.subscribe(function(){
     // console.log(JSON.stringify(store.getState()));

@@ -6,9 +6,9 @@ import Navigation from "./Navigation";
 import RouterURL from "../Router/router";
 import { BrowserRouter as Router } from "react-router-dom";
 import AddPost from "./AddPost";
-import {connect} from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { connect } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const getPostData = () => {
   return axios.get("/getdata").then((res) => res.data);
@@ -21,21 +21,20 @@ function App(props) {
     if (postData === null) {
       getPostData().then((res) => {
         setPostData(res);
+        props.addDataToStore(res);
       });
     }
   });
-  console.log(postData);
-
   const [sbNav, setSbNav] = useState(false);
   const showSidebarToggle = () => {
     setSbNav(!sbNav);
   };
 
-  const showAddPostForm  = () => {
-    if(props.showAddPostForm){
-      return <AddPost />
+  const showAddPostForm = () => {
+    if (props.showAddPostForm) {
+      return <AddPost />;
     }
-  }
+  };
   return (
     <Router>
       <div className="App">
@@ -47,12 +46,17 @@ function App(props) {
           <Nav showSidebarToggle={showSidebarToggle} />
           <div id="layoutSidenav">
             <Navigation />
-            <RouterURL postData={postData}/>
+            <RouterURL postData={postData} />
             {showAddPostForm()}
           </div>
         </div>
       </div>
-      <ToastContainer position="top-right" autoClose={3000} newestOnTop closeOnClick />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        newestOnTop
+        closeOnClick
+      />
     </Router>
   );
 }
@@ -60,9 +64,18 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     notify: state.notify,
-    showAddPostForm: state.showAddPostForm
-  }
-}
+    showAddPostForm: state.showAddPostForm,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addDataToStore: (postData) => {
+      dispatch({
+        type: "GET_POST_DATA",
+        postData 
+      });
+    },
+  };
+};
 
-
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);
